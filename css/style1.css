@@ -1,0 +1,247 @@
+/* ############ MIXINS  ############## */
+
+// neon borders
+@mixin neon-border($color,$rgba,$inset,$x,$y){
+  // $color - border color, $rgba - shadow, $inset - true/false
+  border: 2px solid $color;
+  @if $inset == 'true' {
+    -webkit-box-shadow: 0px 0px $x $y $rgba, inset 0px 0px $x $y $rgba;
+    -moz-box-shadow:    0px 0px $x $y $rgba, inset 0px 0px $x $y $rgba;
+    box-shadow:         0px 0px $x $y $rgba, inset 0px 0px $x $y $rgba;
+  }@else if $inset == 'false'{
+    -webkit-box-shadow: 0px 0px $x $y $rgba;
+    -moz-box-shadow:    0px 0px $x $y $rgba;
+    box-shadow:         0px 0px $x $y $rgba;
+  }
+}
+
+
+@mixin cursorBlink($time){
+  -webkit-animation: Blink $time ease infinite;
+  -moz-animation: Blink $time ease infinite;
+  animation: Blink $time ease infinite;
+
+  @-webkit-keyframes Blink {
+     0%{opacity: 0}
+     50%{opacity: 1}
+     100%{opacity: 0}
+  }
+  @-moz-keyframes Blink {
+    0%{opacity: 0}
+    50%{opacity: 1}
+    100%{opacity: 0}
+  }
+  @keyframes Blink {
+    0%{opacity: 0}
+    50%{opacity: 1}
+    100%{opacity: 0}
+  }
+}
+
+/* ############ END/MIXINS  ############## */
+
+/* ############ COLORS  ############## */
+
+$bukner : #141f23;
+$black-pearl : #051D29;
+$spray: #93EDF5;
+$picton-blue: #4BA0E3;
+$iceberg:#d9f2f4;
+$dairy-cream:#F7E3AF;
+$blosom: #D4AFB9;
+$burnt-siennaRGBA:rgba(240, 93, 94, 0.78);
+$cream-canRGBA: rgba(239, 199, 97, 0.78);
+$curious-blueRGBA: rgba(16, 81, 139, 0.78);
+$aquaRGBA: rgba(0, 255, 255, 0.83);
+
+
+/* ############ END/COLORS  ############## */
+
+/* ############ TYPOGRAPHY  ############## */
+
+h1{
+  font-family: 'Black Ops One', cursive;
+  font-size: 18px;
+  @include media('>=tablet'){
+    font-size: 22px;
+  }
+  margin: 10px;
+}
+
+h2{
+  font-family: 'Black Ops One', cursive;
+  font-size: 30px;
+  margin: 10px;
+}
+
+// links
+a{
+  color: $iceberg;
+  text-decoration: none;
+  transition: all 1s ease;
+
+  // square brackets
+  &.brackets{
+    padding-bottom: 2px;
+    &::before{
+      content:'[ ';
+    }
+    &::after{
+      content:' ]';
+    }
+  }
+  &:hover, &:active, &:focus{
+    background: $iceberg;
+    color: black;
+  }
+}
+
+/* ############ END/TYPOGRAPHY  ############## */
+
+/* ############ BUTTONS  ############## */
+
+.btn{
+  padding: 5px;
+  margin: 5px;
+  color:black;
+  border-radius:10px;
+  background: $spray;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-shadow: none;
+  font-weight: bold;
+
+  // neon border effect
+  @include neon-border($spray,$curious-blueRGBA,'false',4px,2px);
+
+  &:hover{
+    background: transparent;
+    color: $spray;
+    text-shadow: 0px 0px 5px $aquaRGBA;
+  }
+
+}
+
+/* ############ END/BUTTONS  ############## */
+
+/* ############ BASE  ############## */
+
+body{
+  font-size: 20px;
+  font-family: 'Source Code Pro', monospace;
+  color: $spray;
+  text-shadow: 0px 0px 5px $aquaRGBA;
+  background:$black-pearl;
+
+  // background animation
+  @include scanOpacity('false');
+
+  @include media('>tablet'){
+   
+    @include scanOpacity('true');
+  }
+}
+
+
+.cursor{
+  color: $spray;
+  background: transparent;
+  text-shadow: 0px 0px 1px $aquaRGBA;
+
+  // blinking cursor animation
+  @include cursorBlink(2s);
+}
+
+.float-left{
+  float:left;
+
+}
+.clear{
+  clear: both;
+}
+/* ############ END/BASE  ############## */
+
+/* ############ CONTAINER  ############## */
+
+.container2{
+  max-width: 700px;
+  text-align:left !important;
+
+  .wrapper{
+    padding: 2px;
+
+    // glitch effect
+    @include glitchEffect();
+
+  }
+}
+
+/* ############ END/CONTAINER  ############## */
+
+/* ############ QUOTE - MACHINE  ############## */
+
+.quote-machine{
+  float: left;
+  margin: 5px;
+  width: 100%;
+  @include media('>=tablet'){
+    width: 500px;
+  }
+}
+
+
+main{
+  margin-bottom: 2px;
+  padding: 15px;
+  position: relative;
+  
+  blockquote{
+    position: relative;
+    min-height: 140px;
+    margin-bottom: 30px;
+
+    .author{
+      margin-top: 10px;
+      float: right;
+
+    }
+    .warning{
+      padding-top: 10px;
+      text-align: center;
+      >span{
+        color: black;
+        background: $blosom;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-shadow: none;
+      }
+    }
+  }
+
+  .block{
+    position: absolute;
+    bottom: 15px;
+  }
+
+}
+
+  .page-author{
+    text-align: center;
+  }
+
+footer{
+  padding-top: 5px;
+}
+
+/* ############ END/QUOTE - MACHINE  ############## */
+ /*-----------------Viewport less than or equal to 750px----------------*/
+ 
+ @media (max-width:750px){
+	blockquote{
+    font-size:20px;
+    min-height: 150px;
+    margin-bottom: 20px;
+
+ 
+ }
+ 
