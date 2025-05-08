@@ -1,0 +1,96 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.download-btn{
+  outline: none;
+  border: none;
+  color: #fff;
+  display: flex;
+  cursor: pointer;
+  padding: 16px 25px;
+  border-radius: 6px;
+  align-items: center;
+  white-space: nowrap;
+  background: #4A98F7;
+  transition: all 0.2s ease;
+}
+.download-btn:hover{
+  background: #2382f6;
+}
+.download-btn.timer{
+  color: #000;
+  background: none;
+  transition: none;
+  font-size: 1.6rem;
+  pointer-events: none;
+}
+.download-btn.timer b{
+  color: #4A98F7;
+  padding: 0 8px;
+}
+.download-btn .icon{
+  font-size: 2rem;
+}
+.download-btn .text{
+  font-size: 1.5rem;
+  padding-left: 10px;
+}
+.container1{
+   width:50%;
+   height:60%;
+   background-color: #f3f3f3;
+   border:1px dotted rgb(246, 239, 239);
+   text-align:center;
+   margin-left:25%;
+   margin-top:10%;
+  
+}
+.loader1 {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid blue;
+  border-right: 8px solid green;
+  border-bottom: 8px solid red;
+  border-left: 8px solid pink;
+  width: 120px;
+  height: 120px;
+  margin-left:35%;
+  margin-top:10%;
+  margin-bottom:5%;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+ /*-----------------Viewport less than or equal to 520px----------------*/
+
+ @media (max-width: 520px) {
+.container1 {
+    width:70%;
+    height:70%;
+    text-align:center;
+    margin-left:15%;
+    margin-top:10%;
+    
+      }
+.loader1 {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-left:30%;
+    margin-top:30%;
+  }
+ }
